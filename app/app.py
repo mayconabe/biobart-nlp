@@ -15,8 +15,8 @@ import os
 import gradio as gr
 from transformers import pipeline
 
-# >>> TROQUE pelo id do SEU modelo no Hub apos o treino (ex.: "maycon/biobart-pubmed-summarization")
-MODEL_ID = os.environ.get("MODEL_ID", "SEU_USUARIO/biobart-pubmed-summarization")
+# Modelo fine-tuned publicado no HuggingFace Hub (pode ser sobrescrito pela env var MODEL_ID)
+MODEL_ID = os.environ.get("MODEL_ID", "mayconabe/biobart-pubmed-summarization")
 
 MAX_INPUT_TOKENS = 1024  # mesma janela usada no fine-tuning
 

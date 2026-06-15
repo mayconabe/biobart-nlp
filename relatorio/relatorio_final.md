@@ -5,9 +5,9 @@
 **Data:** 16/06/2026
 
 > **Links do produto** (preencher antes de entregar):
-> - 🌐 Aplicacao (HuggingFace Space): `https://huggingface.co/spaces/SEU_USUARIO/biobart-pubmed-sumarizacao`
-> - 💻 Repositorio (GitHub): `https://github.com/SEU_USUARIO/nlp-biobart-pubmed`
-> - 🧬 Modelo (HuggingFace Hub): `https://huggingface.co/SEU_USUARIO/biobart-pubmed-summarization`
+> - 🌐 Aplicacao (HuggingFace Space): `https://huggingface.co/spaces/mayconabe/biobart-pubmed-sumarizacao`
+> - 💻 Repositorio (GitHub): `https://github.com/mayconabe/nlp-biobart-pubmed`
+> - 🧬 Modelo (HuggingFace Hub): `https://huggingface.co/mayconabe/biobart-pubmed-summarization`
 
 ---
 

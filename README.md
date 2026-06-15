@@ -9,8 +9,8 @@ e avaliacao por **ROUGE**.
 
 | Item | Link |
 |---|---|
-| 🌐 Aplicacao web (Gradio / HF Spaces) | `https://huggingface.co/spaces/SEU_USUARIO/biobart-pubmed-sumarizacao` |
-| 🧬 Modelo treinado (HF Hub) | `https://huggingface.co/SEU_USUARIO/biobart-pubmed-summarization` |
+| 🌐 Aplicacao web (Gradio / HF Spaces) | `https://huggingface.co/spaces/mayconabe/biobart-pubmed-sumarizacao` |
+| 🧬 Modelo treinado (HF Hub) | `https://huggingface.co/mayconabe/biobart-pubmed-summarization` |
 | 📄 Relatorio final | [`relatorio/relatorio_final.md`](relatorio/relatorio_final.md) |
 
 ## Arquitetura

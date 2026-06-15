@@ -23,7 +23,7 @@ para sumarizacao de artigos cientificos biomedicos.
 
 O id do modelo carregado vem da constante `MODEL_ID` em `app.py` ou da variavel de
 ambiente `MODEL_ID` (em Settings > Variables, no Space). Aponte para o seu modelo
-publicado no Hub, por exemplo `SEU_USUARIO/biobart-pubmed-summarization`.
+publicado no Hub, por exemplo `mayconabe/biobart-pubmed-summarization`.
 
 ## Rodar localmente
 
