@@ -105,19 +105,43 @@ conectados pelo HuggingFace Hub, onde o modelo treinado e publicado.
 
 ### 6.1 Quantitativo (ROUGE — subconjunto de teste, n=500)
 
-> Preencher com os numeros impressos pela celula de comparacao do notebook de treino.
-
 | Modelo | ROUGE-1 | ROUGE-2 | ROUGE-L | ROUGE-Lsum |
 |---|---|---|---|---|
-| Baseline (`biobart-v2-base`, sem fine-tuning) | _.._ | _.._ | _.._ | _.._ |
-| **BioBART fine-tuned (este trabalho)** | **_.._** | **_.._** | **_.._** | **_.._** |
+| Baseline (`biobart-v2-base`, sem fine-tuning) | 36.17 | 11.92 | 19.83 | 33.26 |
+| **BioBART fine-tuned (este trabalho)** | **40.65** | **15.63** | **23.75** | **36.72** |
 
-Observacao esperada: o modelo ajustado deve superar a baseline em todas as metricas ROUGE,
-confirmando o ganho do fine-tuning em dominio especifico.
+O modelo ajustado **supera a baseline em todas as metricas ROUGE**: +4.48 em ROUGE-1,
++3.71 em ROUGE-2, +3.92 em ROUGE-L e +3.46 em ROUGE-Lsum. O ganho expressivo em **ROUGE-2**
+(bigramas) indica que o fine-tuning capturou nao apenas vocabulario, mas tambem as
+construcoes e colocacoes tipicas dos abstracts biomedicos, confirmando o beneficio do
+ajuste em dominio especifico mesmo com um subconjunto reduzido de treino.
 
 ### 6.2 Qualitativo
 
-> Colar 1–2 exemplos (artigo → resumo gerado × abstract de referencia) da secao 8 do notebook.
+Exemplo do conjunto de teste — artigo sobre **ansiedade na doenca de Parkinson**:
+
+**Resumo gerado (fine-tuned):**
+> *background:* anxiety affects quality of life in those living with parkinson's disease (pd) more
+> so than overall cognitive status, motor deficits, apathy, and depression. [...] in this study, we
+> examined the relationship between anxiety and cognition in patients with pd [...] *methods:* a
+> cross-sectional study was conducted in thirty-three patients with anxiety and seventeen patients
+> without anxiety. *results:* the mean age of the participants was 58.8 +/- 9.3 years [...]
+
+**Resumo da baseline (sem fine-tuning):**
+> anxiety affects quality of life [...] remains meager and lags far behind that of depression. .''.
+> overall, neuropsychiatric symptoms [...] `UNCLASSIFIED` for example [...] `*/(` likewise, apathy
+> and anhedonia in pkd patients [...]  *(texto truncado, repetitivo e com simbolos espurios)*
+
+**Abstract de referencia:**
+> research on the implications of anxiety in parkinson's disease (pd) has been neglected despite its
+> prevalence in nearly 50% of patients [...] this study compared cognitive performance across 50 pd
+> participants with and without anxiety [...]
+
+**Analise:** o modelo *fine-tuned* produz um resumo **estruturado** (background / methods / results),
+fluente e fiel ao artigo, aproximando-se do estilo dos abstracts de referencia. A baseline, sem
+ajuste, gera texto **incoerente, repetitivo e com ruido** (simbolos como `UNCLASSIFIED` e `*/(`),
+evidenciando na pratica o ganho qualitativo do fine-tuning em dominio especifico — coerente com a
+melhora observada nas metricas ROUGE.
 
 ## 7. Limitacoes e trabalhos futuros
 
