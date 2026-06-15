@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Treino / artefatos de modelo
+biobart-pubmed-summarization/
+*.ckpt
+*.safetensors
+*.bin
+checkpoint-*/
+runs/
+wandb/
+
+# Dados / caches
+.cache/
+*.csv
+*.parquet
+
+# SO / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Documentos da disciplina (nao versionar)
+ProjetoFinal_Matutino.pdf

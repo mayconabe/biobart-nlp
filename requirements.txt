@@ -1,0 +1,18 @@
+# Dependencias para reproduzir o projeto localmente.
+# O treino (train/finetune_biobart_pubmed.ipynb) e feito no Google Colab com GPU.
+transformers>=4.44
+datasets
+evaluate
+rouge_score
+accelerate
+huggingface_hub
+torch
+gradio>=4.0
+
+# EDA (eda_pubmed.ipynb)
+pandas
+numpy
+matplotlib
+seaborn
+nltk
+tqdm

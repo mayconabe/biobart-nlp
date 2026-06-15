@@ -1,0 +1,12 @@
+Relato:
+
+Este projeto consiste no fine-tuning do modelo BioBART para a tarefa de sumarização automática de abstracts científicos da área biomédica. Utilizando o dataset PubMed Summarization, disponível publicamente no HuggingFace, o modelo será adaptado para gerar resumos concisos e precisos a partir de textos técnicos extensos. A avaliação será feita com a métrica ROUGE, amplamente utilizada em tarefas de sumarização. O objetivo é demonstrar como modelos de linguagem pré-treinados em domínio específico podem ser eficientemente ajustados para auxiliar profissionais e pesquisadores na triagem de literatura científica.
+
+Plano:
+Este projeto propõe o desenvolvimento de um sistema de sumarização automática de abstracts científicos biomédicos por meio do fine-tuning do modelo BioBART, uma variante do BART pré-treinada em literatura da área da saúde. A motivação central é a crescente dificuldade de pesquisadores e profissionais de saúde em acompanhar o volume de publicações científicas, tornando ferramentas de síntese automática cada vez mais relevantes. O modelo será ajustado para receber como entrada o corpo de um abstract e produzir como saída um resumo conciso e fiel ao conteúdo original.
+
+Objetivos Esperados
+O objetivo principal é treinar um modelo capaz de gerar resumos coerentes e informativos de textos biomédicos, superando a baseline do modelo sem fine-tuning. Como objetivos secundários, espera-se: (i) avaliar o impacto do fine-tuning em domínio específico em comparação com modelos genéricos como o BART base; (ii) analisar qualitativamente amostras geradas pelo modelo; e (iii) reportar desempenho quantitativo utilizando as métricas ROUGE-1, ROUGE-2 e ROUGE-L.
+
+Fontes de Dados
+O principal conjunto de dados a ser utilizado é o PubMed Summarization dataset, disponível publicamente na plataforma HuggingFace (ccdv/pubmed-summarization). O dataset contém aproximadamente 133 mil artigos científicos do PubMed, cada um acompanhado de seu respectivo abstract, que será utilizado como referência de sumarização. Dado o prazo do projeto, será utilizado um subconjunto do dado de treino, mantendo os conjuntos de validação e teste completos para garantir a confiabilidade da avaliação.
