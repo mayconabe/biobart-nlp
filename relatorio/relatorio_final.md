@@ -50,8 +50,10 @@ de treino (tokenizados com o tokenizer do BioBART):
 - Os **artigos sao muito longos** (mediana ~3.5k tokens), muito acima da janela de 1024 do BART.
 - Os **abstracts sao bem comportados** (P99 < 512 tokens).
 - **Razao de compressao** mediana ~13x (em tokens) — tarefa de sumarizacao "pesada", nao parafrase.
-- **Truncamento:** com `max_input_length=1024`, ~95% dos artigos sao truncados; com
-  `max_target_length=256`, < 1% dos abstracts sao afetados.
+- **Truncamento:** com `max_input_length=1024` (limite da janela do modelo), ~95% dos artigos tem
+  a cauda cortada; com `max_target_length=256`, ~58% dos abstracts sao truncados (em 512 tokens
+  esse numero cai para ~1%). O valor 256 foi adotado como equilibrio entre cobertura do resumo e
+  custo de treino/geracao.
 
 **Decisao de pre-processamento (config "moderada" da EDA):** `max_input_length = 1024`,
 `max_target_length = 256`. Filtros de qualidade aplicados ao treino: remover pares com abstract
