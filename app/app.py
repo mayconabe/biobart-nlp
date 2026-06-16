@@ -47,20 +47,44 @@ def summarize(article: str, max_length: int = 256, min_length: int = 40, num_bea
         max_length=int(max_length),
         min_length=int(min_length),
         num_beams=int(num_beams),
+        no_repeat_ngram_size=3,  # evita repetir trigramas (reduz copia literal/loops)
+        early_stopping=True,
     )
     return tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
 
 EXAMPLE_ARTICLE = (
-    "atrial fibrillation ( af ) is the most common sustained arrhythmia in western countries , "
-    "with an estimated 30 million patients affected by 2050 across united states and europe alone . "
-    "atrial fibrillation has a significant impact on morbidity mainly related to symptoms , heart "
-    "failure , and thromboembolic events and is the most frequent arrhythmic cause of hospital "
-    "admission . to date , the most effective treatment for af is radiofrequency catheter ablation , "
-    "and pulmonary vein antrum isolation ( pvai ) is the mainstay of such an approach . the major "
-    "drawback of catheter ablation of af consists in its potential risk of periprocedural "
-    "complications , such as thromboembolic events and bleeding , which makes a correct management "
-    "of anticoagulation essential to prevent such complications ."
+    "type 2 diabetes mellitus ( t2dm ) is a chronic metabolic disorder characterized by insulin "
+    "resistance and progressive beta cell dysfunction , affecting more than 460 million people "
+    "worldwide and projected to rise to 700 million by 2045 . the disease is associated with serious "
+    "microvascular and macrovascular complications , including nephropathy , retinopathy , neuropathy "
+    ", and cardiovascular disease , which substantially increase morbidity , mortality , and health "
+    "care costs . despite the availability of several classes of glucose lowering agents , a large "
+    "proportion of patients fail to achieve adequate glycemic control , highlighting the need for "
+    "novel therapeutic strategies . metformin remains the first line pharmacological therapy for most "
+    "patients with t2dm because of its efficacy , low cost , and favorable safety profile . however , "
+    "its effect on long term cardiovascular outcomes when combined with newer agents such as sodium "
+    "glucose cotransporter 2 ( sglt2 ) inhibitors has not been fully characterized in real world "
+    "populations . in this study , we conducted a retrospective cohort analysis of 3,482 adult "
+    "patients with type 2 diabetes treated at a tertiary care center between 2015 and 2021 . patients "
+    "were classified into two groups according to their treatment regimen : metformin monotherapy "
+    "( n = 1,914 ) and metformin combined with an sglt2 inhibitor ( n = 1,568 ) . the primary outcome "
+    "was a composite of major adverse cardiovascular events , defined as nonfatal myocardial "
+    "infarction , nonfatal stroke , or cardiovascular death . secondary outcomes included changes in "
+    "glycated hemoglobin ( hba1c ) , body weight , and estimated glomerular filtration rate . cox "
+    "proportional hazards models were used to estimate adjusted hazard ratios , controlling for age , "
+    "sex , baseline hba1c , duration of diabetes , and established cardiovascular disease . over a "
+    "median follow up of 3.6 years , the combination therapy group experienced a significantly lower "
+    "rate of major adverse cardiovascular events compared with the monotherapy group ( 8.1% versus "
+    "12.4% ; adjusted hazard ratio 0.71 , 95% confidence interval 0.59 to 0.86 ; p < 0.001 ) . "
+    "patients receiving the sglt2 inhibitor also showed greater reductions in hba1c and body weight , "
+    "as well as a slower decline in renal function , and the incidence of hospitalization for heart "
+    "failure was reduced by approximately one third . adverse events were generally mild ; genital "
+    "mycotic infections were more frequent in the combination group , but rates of diabetic "
+    "ketoacidosis and severe hypoglycemia were low . these findings suggest that the early addition "
+    "of an sglt2 inhibitor to metformin is associated with meaningful cardiovascular and renal "
+    "benefits in a real world population of patients with type 2 diabetes , supporting individualized "
+    "treatment intensification ."
 )
 
 DESCRIPTION = """
