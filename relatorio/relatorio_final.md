@@ -6,7 +6,7 @@
 
 > **Links do produto** (preencher antes de entregar):
 > - 🌐 Aplicacao (HuggingFace Space): `https://huggingface.co/spaces/mayconabe/biobart-pubmed-sumarizacao`
-> - 💻 Repositorio (GitHub): `https://github.com/mayconabe/nlp-biobart-pubmed`
+> - 💻 Repositorio (GitHub): `https://github.com/mayconabe/biobart-nlp`
 > - 🧬 Modelo (HuggingFace Hub): `https://huggingface.co/mayconabe/biobart-pubmed-summarization`
 
 ---
