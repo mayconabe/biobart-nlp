@@ -9,7 +9,7 @@ e avaliacao por **ROUGE**.
 
 | Item | Link |
 |---|---|
-| 🌐 Aplicacao web (Gradio / HF Spaces) | `https://huggingface.co/spaces/mayconabe/biobart-pubmed-sumarizacao` |
+| 🌐 Aplicacao web (Gradio / HF Spaces) | `https://huggingface.co/spaces/mayconabe/biobart-nlp` |
 | 🧬 Modelo treinado (HF Hub) | `https://huggingface.co/mayconabe/biobart-pubmed-summarization` |
 | 📄 Relatorio final | [`relatorio/relatorio_final.md`](relatorio/relatorio_final.md) |
 

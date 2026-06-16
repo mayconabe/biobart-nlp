@@ -4,16 +4,20 @@ App Gradio - Sumarizacao de Abstracts Biomedicos com BioBART (fine-tuned em PubM
 Carrega o modelo publicado no HuggingFace Hub e expoe uma interface web + API REST
 (em /api/predict). Pensado para rodar no HuggingFace Spaces (CPU gratuito).
 
+Usa AutoModelForSeq2SeqLM + model.generate() diretamente (sem pipeline), o que e
+robusto entre versoes do transformers (o pipeline 'summarization' foi removido na v5).
+
 Como apontar para o seu modelo:
   - edite a constante MODEL_ID abaixo, OU
   - defina a variavel de ambiente MODEL_ID (em Spaces: Settings > Variables).
-Para testar o app ANTES do fine-tuning terminar, use o modelo base:
+Para testar com o modelo base, use:
   MODEL_ID = "GanjinZero/biobart-v2-base"
 """
 
 import os
 import gradio as gr
-from transformers import pipeline
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 # Modelo fine-tuned publicado no HuggingFace Hub (pode ser sobrescrito pela env var MODEL_ID)
 MODEL_ID = os.environ.get("MODEL_ID", "mayconabe/biobart-pubmed-summarization")
@@ -21,22 +25,30 @@ MODEL_ID = os.environ.get("MODEL_ID", "mayconabe/biobart-pubmed-summarization")
 MAX_INPUT_TOKENS = 1024  # mesma janela usada no fine-tuning
 
 print(f"Carregando modelo: {MODEL_ID} ...")
-summarizer = pipeline("summarization", model=MODEL_ID, tokenizer=MODEL_ID)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID)
+model.eval()
 print("Modelo carregado.")
 
 
+@torch.no_grad()
 def summarize(article: str, max_length: int = 256, min_length: int = 40, num_beams: int = 4) -> str:
     article = (article or "").strip()
     if not article:
         return "Cole o texto de um artigo/abstract biomedico para gerar o resumo."
-    out = summarizer(
+    inputs = tokenizer(
         article,
+        max_length=MAX_INPUT_TOKENS,
         truncation=True,
+        return_tensors="pt",
+    )
+    output_ids = model.generate(
+        **inputs,
         max_length=int(max_length),
         min_length=int(min_length),
         num_beams=int(num_beams),
     )
-    return out[0]["summary_text"]
+    return tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
 
 EXAMPLE_ARTICLE = (
